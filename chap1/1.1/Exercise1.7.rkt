@@ -50,12 +50,13 @@
 (define (better-good-enough? prev next)
   (< (abs (/ (- next prev) prev))
      0.001))
-(define (better-sqrt-iter prev-guess next-guess x)
-  (if (better-good-enough? prev-guess next-guess)
-      next-guess
-      (better-sqrt-iter next-guess (improve next-guess x) x)))
+(define (better-sqrt-iter guess x)
+  (let ([next (improve guess x)])
+    (if (better-good-enough? guess next)
+      next
+      (better-sqrt-iter next x))))
 
 ; Then we can get better results:
 
-(better-sqrt-iter 0.001 0.1 0.0004)
-(better-sqrt-iter 0.01 1.0 1524157875019052112345.0)
+(better-sqrt-iter 0.1 0.0004)
+(better-sqrt-iter 1.0 1524157875019052112345.0)

@@ -14,14 +14,13 @@
 ; Answer:
 
 (define (iter-cube guess x)
-  (if (good-enough? guess x)
-      guess
-      (iter-cube (improve guess x) x)))
+  (let ([next (improve guess x)])
+    (if (good-enough? guess next)
+        next
+        (iter-cube next x))))
 
-; Use fraction of x to test the error.
-; We don't consider negative x here.
-(define (good-enough? guess x)
-  (< (/ (abs (- (cube guess) x)) x) 0.001))
+(define (good-enough? guess next)
+  (< (abs (/ (- guess next) next)) 0.001))
 
 (define (cube x)
   (* x x x))
