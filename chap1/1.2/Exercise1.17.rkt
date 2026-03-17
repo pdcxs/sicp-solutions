@@ -20,7 +20,8 @@
 ; to fast-expt that uses a logarithmic number of steps.
 
 ; Answer
-; We can think (* a b) as (iter a b c), and (* a b) = (* (double a) (halve b))
+; We can think (* a b) as (iter a b c),
+; and (* a b) = (* (double a) (halve b))
 
 (define (double a)
   (+ a a))
@@ -29,18 +30,14 @@
   (/ b 2))
 
 (define (fast-multiply a b)
-  (define (iter a b c)
-    (cond
-      [(zero? b) c]
-      [(even? b)
-       (iter (double a)
-             (halve b)
-             c)]
-      [else
-       (iter (double a)
-             (halve (sub1 b))
-             (+ a c))]))
-  (iter a b 0))
+  (cond
+    [(zero? b) 0]
+    [(even? b)
+     (fast-multiply (double a) (halve b))]
+    [else
+     (+ a (fast-multiply
+           (double a)
+           (halve (sub1 b))))]))
 
 ; Let's test
 
