@@ -39,4 +39,4 @@
 
 ; We need $0.1 * 3^d \geq n$ then
 ; $d \geq \log_3 10n$, and also be $d \geq \log 10n / log 3$
-; $O(log n)$ is the order of ; both space and steps growth.
+; $O(log n)$ is the order of both space and steps growth.
