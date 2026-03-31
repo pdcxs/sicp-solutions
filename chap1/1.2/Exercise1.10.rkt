@@ -57,7 +57,7 @@
 
 ; (A 3 3)
 ; (A 2 (A 3 2))
-; (A 2 (A 2 (A 3 1))
+; (A 2 (A 2 (A 3 1)))
 ; (A 2 (A 2 2)) ; we have calculated (A 2 2) before
 ; (A 2 4) ; we have calculated (A 2 4) before
 ; 65536
